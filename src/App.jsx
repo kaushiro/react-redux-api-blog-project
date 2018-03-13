@@ -7,6 +7,7 @@ import {
 
 import Header from "./components/Header";
 import FourOhFour from "./components/FourOhFour";
+import Edit from "./components/Edit";
 
 import Articles from "./containers/Articles";
 import Article from "./containers/Article";
@@ -28,6 +29,11 @@ const App = () => (
             { /* pass through the id to the container */ }
             <Route exact path="/articles/:id" render={ ({ match }) => (
                 <Article id={ match.params.id } />
+            )} />
+
+            { /* edit article */ }
+            <Route exact path="/edit/:id" render={ ({ match }) => (
+                <Edit id={ match.params.id } />
             )} />
 
             { /* 404 page */}

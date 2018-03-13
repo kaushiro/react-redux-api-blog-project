@@ -12,9 +12,9 @@ import App from "./App";
 // import in Immutable Map and List for our dummy data
 import { Map, List } from "immutable";
 
-import reducer from "./components/data/reducer";
+import reducer from "./data/reducer";
 
-import initial from "./components/data/initial";
+import initial from "./data/initial";
 
 const store = createStore(
     reducer,

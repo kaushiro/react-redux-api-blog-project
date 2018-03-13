@@ -7,7 +7,7 @@ import {
 
 import Header from "./components/Header";
 import FourOhFour from "./components/FourOhFour";
-import Edit from "./components/Edit";
+import Edit from "./containers/Edit";
 
 import Articles from "./containers/Articles";
 import Article from "./containers/Article";
@@ -32,7 +32,7 @@ const App = () => (
             )} />
 
             { /* edit article */ }
-            <Route exact path="/edit/:id" render={ ({ match }) => (
+            <Route exact path="/articles/:id/edit" render={ ({ match }) => (
                 <Edit id={ match.params.id } />
             )} />
 

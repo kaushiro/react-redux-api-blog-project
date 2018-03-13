@@ -1,4 +1,5 @@
-import { Map } from "immutable";
+import { Map, List } from "immutable";
+
 
 const initial = Map({
     articles: List([
@@ -20,7 +21,7 @@ const initial = Map({
             ]),
             tags: List(["blah", "fish-fingers"]),
         }),
-    ]);
+    ])
 });
 
 export default initial;

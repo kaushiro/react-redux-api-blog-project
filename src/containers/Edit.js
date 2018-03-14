@@ -1,9 +1,15 @@
 import { connect } from "react-redux";
 // import React from "react";
 import Edit from "../components/Edit";
+import { editArticle } from "../data/actions";
 
 
-// the fields the form should have
+
+const mapDispatchToProps = (dispatch, data) => {
+    return {
+        onSubmit: (data) => dispatch(editArticle(data)),
+    };
+};
 
 
 // Wrap <Edit> in a container component so that you can
@@ -33,4 +39,4 @@ const mapStateToProps = (state, { id, title }) => {
     
 
 
-export default connect(mapStateToProps)(Edit);
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);

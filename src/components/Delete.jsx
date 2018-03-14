@@ -1,17 +1,12 @@
 import React from "react";
 
-import Form from "./Forms/Form";
-
-import FourOhFour from "./FourOhFour";
-
 
 // the Edit article component
-const Delete = ({id, article}) =>  !fields ? <FourOhFour /> : (
+const Delete = ({onClick}) => (
     <div>
-        <h2>Are you sure you want to delete article { id }?</h2>
+        <h3>Are you sure you want to delete this article?</h3>
 
-        <button onSubmit={ this.submit }>Delete</button>
-
+        <button onClick={ onClick }>Delete Article</button>
     </div>
 );
 

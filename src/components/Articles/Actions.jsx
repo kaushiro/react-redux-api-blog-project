@@ -10,7 +10,9 @@ const Actions = ({ article }) => (
 
         { " " }
 
-        <button className="btn btn-danger">Delete Article</button>
+        <Link to={ "/articles/" + article.get("id") + "/delete" } className="btn btn-danger">
+        	Delete Article
+        </Link>
     </div>
 );
 

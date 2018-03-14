@@ -21,6 +21,15 @@ const initial = Map({
             ]),
             tags: List(["blah", "fish-fingers"]),
         }),
+        Map({
+            id: 3,
+            title: "Post #3",
+            article: "<p>Blah blah blah</p>",
+            comments: List([
+                Map({ email: "brenda@brenda.com", comment: "I disagree, in an agressive and unpleasant manner" }),
+            ]),
+            tags: List(["blah", "fish-fingers"]),
+        }),
     ])
 });
 

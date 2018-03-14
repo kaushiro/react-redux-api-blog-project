@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import React, { Component } from "react";
-import FourOhFour from "../components/FourOhFour";
+// import React from "react";
 import Edit from "../components/Edit";
 
 
@@ -14,9 +13,11 @@ const mapStateToProps = (state, { id, title }) => {
     const article = articles.find(a => a.get("id") === +id);
 
     if (article) {
+
     	const fields = [
 	    { name: "title", label: "Title", value: article.get("title") },
 	    { name: "article", label: "Article", value: article.get("article") },
+	    { name: "tags", label: "Tags", value: article.get("tags") },
 		];
 
 	   return {

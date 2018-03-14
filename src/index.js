@@ -9,9 +9,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import the App component
 import App from "./App";
 
-// import in Immutable Map and List for our dummy data
-import { Map, List } from "immutable";
-
 import reducer from "./data/reducer";
 
 import initial from "./data/initial";

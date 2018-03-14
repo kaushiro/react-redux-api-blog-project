@@ -10,13 +10,13 @@ const fields = [
     { name: "tags", label: "Tags", value: "" },
 ];
 
-// the add article component
-const Add = ({article}) => (
+// accept the onSubmit prop we just added 
+const Add = ({ onSubmit }) => (
     <div>
         <h2>Add Article</h2>
-
-        <Form className="panel-body" fields={ fields } button="Add Article" />
-
+        
+        { /* pass through onSubmit to the Form */ }
+        <Form onSubmit={ onSubmit } className="panel-body" fields={ fields } button="Add Article" />
     </div>
 );
 

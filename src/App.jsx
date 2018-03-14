@@ -8,10 +8,11 @@ import {
 import Header from "./components/Header";
 import FourOhFour from "./components/FourOhFour";
 import Edit from "./containers/Edit";
+import Delete from "./components/Delete";
 
 import Articles from "./containers/Articles";
 import Article from "./containers/Article";
-import Add from "./components/Articles/Add";
+import Add from "./containers/Add";
 
 const App = () => (
     <div>
@@ -34,6 +35,10 @@ const App = () => (
             { /* edit article */ }
             <Route exact path="/articles/:id/edit" render={ ({ match }) => (
                 <Edit id={ match.params.id } />
+            )} />
+
+            <Route exact path="/articles/:id/delete" render={ ({ match }) => (
+                <Delete if={ match.params.id } />
             )} />
 
             { /* 404 page */}

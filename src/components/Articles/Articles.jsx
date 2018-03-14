@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 // shows a list of articles
 const Articles = ({ articles }) => (
     <div>
@@ -20,5 +21,7 @@ const Articles = ({ articles }) => (
         }
     </div>
 );
+
+
 
 export default Articles;

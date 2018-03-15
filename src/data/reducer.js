@@ -20,23 +20,34 @@ const createArticle = ({ title, article, tags }) => {
     });
 };
 
-const changeArticle = ({ id, title, article, tags }) => {
+// const changeArticle = ({ id, title, article, tags }) => {
 
-    return Map({
-        id: id,
-        title: title,
-        article: article,
-        comments: List(),
-        tags: List(),
-    });
-};
+//     return Map({
+//         id: id,
+//         title: title,
+//         article: article,
+//         comments: List(),
+//         tags: List(),
+//     });
+// };
 
 // use the createArticle function
 const addArticle = (state, action) => state.update("articles", articles => articles.push(createArticle(action)));
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
-const editArticle = (state, {id}) => state.update("articles", articles =>
-	articles.get(article => article.get("id") === id))
-	.set(changeArticle());
+const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles =>
+	articles.map(article => {
+        if (article.get(id) === id) {
+            return article.set({
+            id: id,
+            title: title,
+            article: article,
+            tags: List(),
+        });
+        } else {
+            return article;
+        }
+    }
+))
 
 const reducer = (state, action) => {
     switch (action.type) {

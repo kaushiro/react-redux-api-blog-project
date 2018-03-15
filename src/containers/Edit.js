@@ -5,7 +5,7 @@ import { editArticle } from "../data/actions";
 
 
 
-const mapDispatchToProps = (dispatch, data) => {
+const mapDispatchToProps = dispatch => {
     return {
         onSubmit: (data) => dispatch(editArticle(data)),
     };

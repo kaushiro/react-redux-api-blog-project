@@ -14,10 +14,9 @@ export const deleteArticle = (id) => {
     };
 };
 
-export const editArticle = ( id, { title, article, tags }) => {
+export const editArticle = ( { title, article, tags }) => {
     return {
         type: "editArticle",
-        id: id,
         title: title,
         article: article,
         tags: tags,

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Comments from "../components/Articles/Comments";
-import { commentArticle } from "../data/actions";
+import { commentArticle } from "../data/actions/state";
 
 
 const mapDispatchToProps = (dispatch, {id}) => {

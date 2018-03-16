@@ -2,30 +2,17 @@
 import { Map, List } from "immutable";
 
 
-// need to track the last ID used
-// we've got two dummy items, so start at 2
-let lastID = 2;
 
 // create a function that returns a new article Map
 const createArticle = ({ title, article, tags }) => {
-    // up the ID by 1 every time
-    lastID += 1;
 
     return Map({
-        id: lastID,
         title: title,
         article: article,
         comments: List(),
         tags: List(),
     });
 };
-
-// const createComment = ({ email, comment }) => {
-//     return Map({
-//         email: email,
-//         comment: comment,
-//     });
-// };
 
 // use the createArticle function
 const addArticle = (state, action) => state.update("articles", articles => articles.push(createArticle(action)));
@@ -52,6 +39,10 @@ const commentArticle = (state, { id, email, comment }) => state.update("articles
         }
     })
 );
+// take the articles we've been given and set them as articles
+// note: this will be expecting an Immutable List
+const setArticles = (state, { articles }) => state.set("articles", articles);
+
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -59,6 +50,7 @@ const reducer = (state, action) => {
         case "deleteArticle": return deleteArticle(state, action);
         case "editArticle": return editArticle(state, action);
         case "commentArticle": return commentArticle(state, action);
+        case "setArticles": return setArticles(state, action);
         default: return state;
     }
 }

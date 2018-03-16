@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 // import React from "react";
 import Edit from "../components/Edit";
-import { editArticle } from "../data/actions";
+import { editArticle } from "../data/actions/state";
 
 
 

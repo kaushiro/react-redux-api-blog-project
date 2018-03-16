@@ -5,9 +5,9 @@ import { editArticle } from "../data/actions";
 
 
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, {id}) => {
     return {
-        onSubmit: (data) => dispatch(editArticle(data)),
+        onSubmit: (data) => dispatch(editArticle(data, id)),
     };
 };
 
@@ -20,9 +20,9 @@ const mapStateToProps = (state, { id, title }) => {
 
     if (article) {
     	const fields = [
-	    { name: "title", label: "Title", value: article.get("title") },
-	    { name: "article", label: "Article", value: article.get("article") },
-	    { name: "tags", label: "Tags", value: article.get("tags").join(", ") },
+    	    { name: "title", label: "Title", value: article.get("title") },
+    	    { name: "article", label: "Article", value: article.get("article") },
+    	    { name: "tags", label: "Tags", value: article.get("tags").join(", ") },
 		];
 
 		return {

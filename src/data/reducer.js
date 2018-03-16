@@ -35,16 +35,11 @@ const createArticle = ({ title, article, tags }) => {
 const addArticle = (state, action) => state.update("articles", articles => articles.push(createArticle(action)));
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
 const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles =>
-	articles.map(article => {
-        if (article.get(id) === id) {
-            return article.set({
-            id: id,
-            title: title,
-            article: article,
-            tags: List(),
-        });
+	articles.map(a => {
+        if (a.get("id") === id) {
+            return a.set("title", title).set("article", article);
         } else {
-            return article;
+            return a;
         }
     }
 ))

@@ -2,8 +2,7 @@ import { Map, List } from "immutable";
 
 
 const initial = Map({
-    titles: List([]),
-    articles: Map({}),
+    articles: List([]),
 });
 
 export default initial;

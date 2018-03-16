@@ -21,7 +21,7 @@ export const getArticles = () => dispatch => {
 };
 
 export const postArticle = (data) => dispatch => {
-    axios.get("/articles").then(response => {
+    axios.post("/articles").then(response => {
         // wrap the response.data with fromJS to convert it into an Immutable List
         // should not need to change thing toJS in components
         const articles = fromJS(response.data);

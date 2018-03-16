@@ -18,7 +18,7 @@ class Comments extends Component {
 
         return (
             <div>
-                { /* check there are articles to show */ }
+                { /* check there are comments to show */ }
                 { comments.count() ?
                 <div>
                     <h2>Comments</h2>
@@ -34,8 +34,7 @@ class Comments extends Component {
                     </ul>
                 </div>
                 :
-
-                <p>Nothing to display</p>
+                <p>No comments yet</p>
                 
                 }
 

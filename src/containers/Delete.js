@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Article from "../components/Delete";
-import { deleteArticle } from "../data/actions";
+import { deleteArticle } from "../data/actions/state";
 
 const mapDispatchToProps = (dispatch, { id }) => {
     return {

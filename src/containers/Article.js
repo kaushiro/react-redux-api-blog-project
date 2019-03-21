@@ -1,13 +1,16 @@
 import { connect } from "react-redux";
 import Article from "../components/Articles/Article";
-import { deleteArticle } from "../data/actions";
+import { deleteArticle } from "../data/actions/state";
 
 // the second argument passed to mapStateToProps represent the props passed in from the parent
 const mapStateToProps = (state, { id }) => {
+	const titles = state.get("titles");
+	const title = titles.find(t => t.get("id") === +id);
     const articles = state.get("articles");
     const article = articles.find(a => a.get("id") === +id);
 
     return {
+    	title: title,
         article: article,
     };
 };

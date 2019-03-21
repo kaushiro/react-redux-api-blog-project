@@ -13,7 +13,10 @@ const Actions = ({ article }) => (
         <Link to={ "/articles/" + article.get("id") + "/delete" } className="btn btn-danger">
         	Delete Article
         </Link>
+
     </div>
+    
 );
+
 
 export default Actions;

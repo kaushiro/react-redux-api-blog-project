@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import history from "./history";
 
@@ -14,11 +15,8 @@ import reducer from "./data/reducer";
 
 import initial from "./data/initial";
 
-const store = createStore(
-    reducer,
-    initial,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, initial, composeEnhancers(applyMiddleware(thunk)));
 
 // wrap Router with Provider
 ReactDOM.render(

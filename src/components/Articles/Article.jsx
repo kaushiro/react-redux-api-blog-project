@@ -4,10 +4,10 @@ import FourOhFour from "../FourOhFour";
 
 import Actions from "./Actions";
 import Tags from "./Tags";
-import Comments from "./Comments";
+import Comments from "../../containers/Comments";
 
 // if article isn't passed in, that means it's an invalid id, so show FourOhFour
-const Article = ({ article }) => !article ? <FourOhFour /> : (
+const Article = ({ article, id }) => !article ? <FourOhFour /> : (
     <div>
         { /* the edit/delete buttons  */ }
         <Actions article={ article } />
@@ -23,7 +23,7 @@ const Article = ({ article }) => !article ? <FourOhFour /> : (
         <hr />
 
         { /* use the comments component */ }
-        <Comments comments={ article.get("comments") } />
+        <Comments id={ id } comments={ article.get("comments") } />
     </div>
 );
 

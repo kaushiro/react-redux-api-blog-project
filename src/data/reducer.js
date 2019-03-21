@@ -19,18 +19,23 @@ const createArticle = ({ title, article, tags }) => {
 
 // use the createArticle function
 const addArticle = (state, data) => state.update("articles", articles => articles.push(createArticle(data)));
+
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
-const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
-	articles.map(article => {
-        if (article.get("id") === +id) {
-            console.log('match');
-            return article.set(
-            "id": id,
-            "title": title,
-            "article": article,
-            "tags": tags
-          
-        );
+
+// const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
+// 	articles.map(article => {
+//         if (article.get("id") === +id) {
+//             console.log('match');
+//             return article.set(
+//             "id": id,
+//             "title": title,
+//             "article": article,
+//             "tags": tags
+//           )
+//         }
+//     })
+//     )
+// );
 
 const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles =>
 	articles.map(a => {

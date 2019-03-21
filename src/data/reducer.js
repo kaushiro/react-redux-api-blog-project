@@ -4,7 +4,7 @@ import { Map, List } from "immutable";
 
 // need to track the last ID used
 // we've got two dummy items, so start at 2
-let lastID = 2;
+let lastID = 3;
 
 // create a function that returns a new article Map
 const createArticle = ({ title, article, tags }) => {
@@ -32,22 +32,24 @@ const createArticle = ({ title, article, tags }) => {
 // };
 
 // use the createArticle function
-const addArticle = (state, action) => state.update("articles", articles => articles.push(createArticle(action)));
+const addArticle = (state, data) => state.update("articles", articles => articles.push(createArticle(data)));
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
-const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles =>
+const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
 	articles.map(article => {
-        if (article.get(id) === id) {
-            return article.set({
-            id: id,
-            title: title,
-            article: article,
-            tags: List(),
-        });
+        if (article.get("id") === +id) {
+            console.log('match');
+            return article.set(
+            "id": id,
+            "title": title,
+            "article": article,
+            "tags": tags
+          
+        );
         } else {
             return article;
         }
     }
-))
+)))
 
 const reducer = (state, action) => {
     switch (action.type) {

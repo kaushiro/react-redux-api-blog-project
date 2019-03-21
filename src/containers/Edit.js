@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 
 // Wrap <Edit> in a container component so that you can
 // pass in the correct article's title and article properties to display in the form
-const mapStateToProps = (state, { id, title }) => {
+const mapStateToProps = (state, { id, title, tags }) => {
     const articles = state.get("articles");
     const article = articles.find(a => a.get("id") === +id);
 

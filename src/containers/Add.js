@@ -1,11 +1,14 @@
 import { connect } from "react-redux";
 import Add from "../components/Articles/Add";
 import { addArticle } from "../data/actions";
-
+import history from "../history";
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: data => dispatch(addArticle(data)),
+        onSubmit: data => {
+        	dispatch(addArticle(data));
+        history.push("/");
+    	},
     };
 };
 

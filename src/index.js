@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import history from "./history";
 
 // import the Router component
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 
 // import the App component
 import App from "./App";
@@ -22,7 +23,7 @@ const store = createStore(
 // wrap Router with Provider
 ReactDOM.render(
     <Provider store={ store }>
-        <Router>
+        <Router history={ history }>
             <App />
         </Router>
     </Provider>,

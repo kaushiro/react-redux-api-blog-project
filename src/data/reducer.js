@@ -1,25 +1,9 @@
 // add List to our imports
 import { Map, List } from "immutable";
 
-// need to track the last ID used
-// we've got two dummy items, so start at 2
-let lastID = 3;
-
-
 // create a function that returns a new article Map
-const createArticle = ({ title, article, tags }) => {
-
-    return Map({
-        title: title,
-        article: article,
-        comments: List(),
-        tags: List(),
-    });
-};
-
-// use the createArticle function
-const addArticle = (state, data) => state.update("articles", articles => articles.push(createArticle(data)));
-
+const addArticle = (state, { article }) => state.update("articles", articles => articles.set(article.get("id"), article.set("tags", List()))
+);
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
 
 // const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (

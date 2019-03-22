@@ -19,7 +19,7 @@ class Articles extends Component {
                         { articles.map(article => (
                             <li className="list-group-item" key={ article.get("id") }>
                                 { /* link to the article using its id */ }
-                                <Link to={ "/articles/" + article.get("id") }>{ article.get("title") }</Link>
+                                <Link to={ "/articles/" + article.get(+"id") }>{ article.get("title") }</Link>
                             </li>
                         ))}
                     </ul>

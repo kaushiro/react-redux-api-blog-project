@@ -1,10 +1,8 @@
 
-export const addArticle = ({ title, article, tags }) => {
+export const addArticle = article => {
     return {
         type: "addArticle",
-        title: title,
         article: article,
-        tags: tags,
     };
 };
 
@@ -34,10 +32,10 @@ export const commentArticle = ( { email, comment }, id ) => {
     };
 };
 
-export const setArticles = articles => {
+export const setArticles = titles => {
     return {
         type: "setArticles",
-        articles: articles,
+        titles: titles,
     };
 };
 

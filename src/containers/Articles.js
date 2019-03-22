@@ -11,7 +11,7 @@ import { getArticles } from "../data/actions/api";
 // it should return an object, which gets passed in as props to the connected component
 const mapStateToProps = state => {
     return {
-        articles: state.get("articles"),
+        articles: state.get("titles"),
     };
 };
 

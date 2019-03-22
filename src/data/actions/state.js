@@ -1,3 +1,9 @@
+export const setTitles = titles => {
+    return {
+        type: "setTitles",
+        titles: titles,
+    };
+};
 
 export const addArticle = article => {
     return {

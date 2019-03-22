@@ -1,9 +1,12 @@
 // add List to our imports
 import { Map, List } from "immutable";
+import history from "../history";
 
 // create a function that returns a new article Map
-const addArticle = (state, { article }) => state.update("articles", articles => articles.set(article.get("id"), article.set("tags", List()))
+const addArticle = (state, { article }) => state.update("articles", articles =>
+    articles.set(article.get("id"), article.set("tags", List()))
 );
+
 const deleteArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
 
 // const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
@@ -47,7 +50,7 @@ const commentArticle = (state, { id, email, comment }) => state.update("articles
 );
 // take the articles we've been given and set them as articles
 // note: this will be expecting an Immutable List
-const setArticles = (state, { articles }) => state.set("articles", articles);
+const setTitles = (state, { titles }) => state.set("articles", titles);
 
 
 const reducer = (state, action) => {
@@ -56,7 +59,7 @@ const reducer = (state, action) => {
         case "deleteArticle": return deleteArticle(state, action);
         case "editArticle": return editArticle(state, action);
         case "commentArticle": return commentArticle(state, action);
-        case "setArticles": return setArticles(state, action);
+        case "setTitles": return setTitles(state, action);
         default: return state;
     }
 }

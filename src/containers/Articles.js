@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Articles from "../components/Articles/Articles";
 
 // import in the getArticles API action
-import { getArticles } from "../data/actions/api";
+import { getTitles } from "../data/actions/api";
 
 // mapStateToProps is passed in the current state
 // it should return an object, which gets passed in as props to the connected component
@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 // setup mapDispatchToProps to call the action
 const mapDispatchToProps = dispatch => {
     return {
-        onLoad: () => dispatch(getArticles()),
+        onLoad: () => dispatch(getTitles()),
     };
 };
 

@@ -7,20 +7,20 @@ import { fromJS } from "immutable";
 
 // import the setArticles action
 import { 
-    setArticles, 
+    setTitles, 
     addArticle,
 } from "./state";
 
 
 
-export const getArticles = () => dispatch => {
+export const getTitles = () => dispatch => {
     axios.get("/articles").then(response => {
         // wrap the response.data with fromJS to convert it into an Immutable List
         // should not need to change thing toJS in components
         const titles = fromJS(response.data);
 
         // dispatch the setArticles action, passing along the articles List
-        dispatch(setArticles(titles));
+        dispatch(setTitles(titles));
     });
 };
 

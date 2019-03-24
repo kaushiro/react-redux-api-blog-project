@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import Comments from "../components/Articles/Comments";
-import { commentArticle } from "../data/actions/state";
+import { postComment } from "../data/actions/api";
 
 
 const mapDispatchToProps = (dispatch, {id}) => {
     return {
-        onSubmit: data => dispatch(commentArticle(data, id)),
+        addComment: data => dispatch(postComment(data, id)),
     };
 };
 

@@ -7,7 +7,7 @@ const Tags = ({ tags }) => {
 	console.log(allTags);
 	return (
 		<div>
-    		{ allTags.map((tag, i) => (
+    		{ allTags.map((tag) => (
             <Link to={ "/tags/" + tag } className="label label-primary">
                 { tag }
             </Link>

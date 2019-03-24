@@ -9,6 +9,11 @@ import { fromJS } from "immutable";
 import { 
     setTitles, 
     addArticle,
+    removeArticle,
+    addComment,
+    editArticle,
+    setArticle,
+    setComments
 } from "./state";
 
 
@@ -28,5 +33,39 @@ export const postArticle = (data) => dispatch => {
         console.log(article);
         dispatch(addArticle(article));
         history.push("/");
+    });
+};
+export const getArticle = (id) => dispatch => {
+    axios.get("/articles" + id).then(response => {
+        const article = response.data;
+        dispatch(setArticle(article));
+        dispatch(getComments(id));
+    });
+};
+export const getComments = id => dispatch => {
+    axios.get("/articles/" + id + "/comments").then(response => {
+        const comments = response.data;
+        dispatch(setComments(id, comments));
+    });
+};
+export const deleteArticle = id => dispatch => {
+    axios.delete("/articles/" + id).then(response => {
+        dispatch(removeArticle(id));
+        history.push("/")
+    });
+};
+
+export const postComment = (id, data) => dispatch => {
+    axios.post("articles/" + id + "comments", data).then(response=> {
+        const comment = response.data;
+        dispatch(addComment(id, comment))
+    })
+} 
+
+export const putArticle = (id, data )=> dispatch => {
+    axios.put("/articles/" + id, data).then(response => {
+        const article = response.data;
+        dispatch(editArticle(article));
+        history.push("/articles" + id)
     });
 };

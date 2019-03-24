@@ -7,10 +7,10 @@ import Tags from "./Tags";
 import Comments from "../../containers/Comments";
 
 // if article isn't passed in, that means it's an invalid id, so show FourOhFour
-const Article = ({ article, id }) => !article ? <FourOhFour /> : (
+const Article = ({ article, id, onDelete }) => !article ? <FourOhFour /> : (
     <div>
         { /* the edit/delete buttons  */ }
-        <Actions article={ article } />
+        <Actions article={ article } onDelete={ onDelete } />/>
 
         <h2>{ article.title }</h2>
 

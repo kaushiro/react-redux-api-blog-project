@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 // import React from "react";
 import Edit from "../components/Edit";
-import { editArticle } from "../data/actions/state";
+import { putArticle } from "../data/actions/api";
 
 
 
 const mapDispatchToProps = (dispatch, {id}) => {
     return {
-        onSubmit: (data) => dispatch(editArticle(data, id)),
+        onSubmit: (data) => dispatch(putArticle(data, id)),
     };
 };
 

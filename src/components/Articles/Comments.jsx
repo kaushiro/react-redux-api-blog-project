@@ -14,7 +14,7 @@ class Comments extends Component {
     }
 
     render ( onSubmit ) {
-        const { comments } = this.props;
+        const { comments, addComment } = this.props;
 
         return (
             <div>
@@ -41,7 +41,7 @@ class Comments extends Component {
                 <div className="panel panel-default">
                     <div className="panel-heading">Add Comment</div>
                     { /* pass through fields, button and also a className prop */ }
-                    <Form onSubmit={ onSubmit } className="panel-body" fields={ fields } button="Add Comment" />
+                    <Form onSubmit={ addComment } className="panel-body" fields={ fields } button="Add Comment" />
                 </div>
             </div>
         )

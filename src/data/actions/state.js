@@ -19,47 +19,31 @@ export const addArticle = article => {
     };
 };
 
-
-export const deleteArticle = (id) => {
+export const removeArticle = id => {
     return {
-        type: "deleteArticle",
+        type: "removeArticle",
         id: id,
     };
 };
 
-export const editArticle = ( { title, article, tags }, id ) => {
+export const addComment = (id, comment) => {
     return {
-        type: "editArticle",
+        type: "addComment",
         id: id,
-        title: title,
-        article: article,
-        tags: tags,
-    };
-};
-
-export const commentArticle = ( { email, comment }, id ) => {
-    return {
-        type: "commentArticle",
-        id: id,
-        email: email,
         comment: comment,
     };
 };
 
-export const setArticles = articles => {
+export const setComments = (id, comments) => {
     return {
-        type: "setArticles",
-        articles: articles,
+        type: "setComments",
+        id: id,
+        comments: comments,
     };
 };
-
-// export const getArticle = id => dispatch => {
-
-//     // now we can dispatch an API request
-//     axios.get("/articles/" + id).then({ data } => {
-
-//         // when we get a response back, we dispatch an action to update the state
-//         const article = data;
-//         dispatch(addArticle(article));
-//     });
-// };
+export const editArticle = article => {
+    return {
+        type: "editArticle",
+        article: article,
+    };
+};

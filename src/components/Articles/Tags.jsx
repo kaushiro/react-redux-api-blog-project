@@ -1,12 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // show each tag - tags passed in by parent
-const Tags = ({ tags }) => (
-    <div>
-        { tags.map((tag, i) => (
-            <span className="label label-primary" key={ i }>{ tag }</span>
-        ))}
-    </div>
-);
+const Tags = ({ tags }) => {
+	const allTags = tags.split(",");
+	console.log(allTags);
+	return (
+		<div>
+    		{ allTags.map((tag, i) => (
+            <Link to={ "/tags/" + tag } className="label label-primary">
+                { tag }
+            </Link>
+        ))}	
+    	</div>
+	)
+}
 
 export default Tags;

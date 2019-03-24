@@ -3,24 +3,22 @@ import { connect } from "react-redux";
 
 // import in the Articles component
 import Articles from "../components/Articles/Articles";
-
-// import in the getArticles API action
 import { getTitles } from "../data/actions/api";
 
 // mapStateToProps is passed in the current state
 // it should return an object, which gets passed in as props to the connected component
-const mapStateToProps = state => {
+const mapStateToProps = (state, { tag }) => {
     return {
-        articles: state.articles,
+        articles: state.titles.filter(article => article.tags.some(t => t.name === tag)),
     };
 };
 
-// setup mapDispatchToProps to call the action
 const mapDispatchToProps = dispatch => {
     return {
         onLoad: () => dispatch(getTitles()),
-    };
-};
+    }
+}
 
-// make sure we add mapDispatchToProps to the connect call
+// connect up mapStateToProps with the Articles component
+// Articles' props are now controlled by this file
 export default connect(mapStateToProps, mapDispatchToProps)(Articles);

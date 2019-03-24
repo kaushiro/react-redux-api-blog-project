@@ -1,6 +1,22 @@
 {
-  "titles": [
-  ],
-  "articles": {
-  },
+  "articles": [
+    {
+      "title": "fda",
+      "article": "adf",
+      "tags": "adf",
+      "id": 1
+    },
+    {
+      "title": "df",
+      "article": "dasf",
+      "tags": "dfa, daf",
+      "id": 2
+    },
+    {
+      "title": "daf",
+      "article": "daf",
+      "tags": "adfaddafdfdsa, dafasf, adfadsf",
+      "id": 3
+    }
+  ]
 }

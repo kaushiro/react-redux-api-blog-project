@@ -1,7 +1,14 @@
-export const setTitles = titles => {
+export const setTitles = articles => {
     return {
         type: "setTitles",
-        titles: titles,
+        articles: articles,
+    };
+};
+
+export const setArticle = article => {
+    return {
+        type: "setArticle",
+        article: article,
     };
 };
 
@@ -11,6 +18,7 @@ export const addArticle = article => {
         article: article,
     };
 };
+
 
 export const deleteArticle = (id) => {
     return {
@@ -38,10 +46,10 @@ export const commentArticle = ( { email, comment }, id ) => {
     };
 };
 
-export const setArticles = titles => {
+export const setArticles = articles => {
     return {
         type: "setArticles",
-        titles: titles,
+        articles: articles,
     };
 };
 

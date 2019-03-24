@@ -4,7 +4,7 @@ import { deleteArticle } from "../data/actions/state";
 
 // the second argument passed to mapStateToProps represent the props passed in from the parent
 const mapStateToProps = (state, { id }) => {
-	const article = state.getIn(["articles", id]);
+	const article = state.articles;
     return {
         article: article,
     };

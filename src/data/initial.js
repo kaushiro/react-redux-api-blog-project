@@ -1,9 +1,6 @@
-import { Map, List } from "immutable";
-
-
-const initial = Map({
-	titles: List(),
-    articles: Map(),
-});
+import { Map, List } from "immutable"
+const initial = {
+	articles: List(),
+};
 
 export default initial;

@@ -12,18 +12,18 @@ const Article = ({ article, id }) => !article ? <FourOhFour /> : (
         { /* the edit/delete buttons  */ }
         <Actions article={ article } />
 
-        <h2>{ article.get("title") }</h2>
+        <h2>{ article.title }</h2>
 
         { /* allows us to set HTML inside an element */ }
-        <div dangerouslySetInnerHTML={{ __html: article.get("article") }} />
+        <div dangerouslySetInnerHTML={{ __html: article.article }} />
 
         { /* use the Tags component to show the tags */ }
-        <Tags tags={ article.get("tags") } />
+        <Tags tags={ article.tags } />
 
         <hr />
 
         { /* use the comments component */ }
-        <Comments id={ id } comments={ article.get("comments") } />
+        <Comments id={ id } comments={ article.comments } />
     </div>
 );
 

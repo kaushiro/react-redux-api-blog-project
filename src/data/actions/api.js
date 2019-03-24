@@ -15,22 +15,17 @@ import {
 
 export const getTitles = () => dispatch => {
     axios.get("/articles").then(response => {
-        // wrap the response.data with fromJS to convert it into an Immutable List
-        // should not need to change thing toJS in components
-        const titles = fromJS(response.data);
-
-        // dispatch the setArticles action, passing along the articles List
-        dispatch(setTitles(titles));
+        const articles = response.data;
+        console.log(articles);
+        dispatch(setTitles(articles));
     });
 };
 
 export const postArticle = (data) => dispatch => {
+    // data.tags = data.tags.split(/,\s+/);
     axios.post("/articles", data).then(response => {
-        // wrap the response.data with fromJS to convert it into an Immutable List
-        // should not need to change thing toJS in components
-        const article = fromJS(response.data);
-
-        // dispatch the setArticles action, passing along the articles List
+        const article = data;
+        console.log(article);
         dispatch(addArticle(article));
         history.push("/");
     });

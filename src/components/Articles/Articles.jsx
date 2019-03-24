@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import Tags from "./Tags";
 
 class Articles extends Component {
     componentDidMount() {
@@ -13,13 +13,17 @@ class Articles extends Component {
         return (
             <div>
                 { /* check there are articles to show */ }
-                { articles.count() ?
+                { articles.length ?
                     <ul className="list-group">
                         { /* map over each article and display a list item for each one */ }
                         { articles.map(article => (
-                            <li className="list-group-item" key={ article.get("id") }>
+                            <li className="list-group-item" key={ article.id }>
                                 { /* link to the article using its id */ }
-                                <Link to={ "/articles/" + article.get(+"id") }>{ article.get("title") }</Link>
+                                <Link to={ "/articles/" + article.id }>{ article.title }
+                                </Link>
+                                <div className="pull-right">
+                                    <Tags tags={ article.tags } />
+                                </div>
                             </li>
                         ))}
                     </ul>

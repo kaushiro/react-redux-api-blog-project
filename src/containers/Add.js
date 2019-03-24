@@ -5,7 +5,7 @@ import { postArticle } from "../data/actions/api";
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: data => dispatch(postArticle(data))
+        onSubmit: (data)=> dispatch(postArticle(data))
     }
 }
 

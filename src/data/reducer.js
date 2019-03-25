@@ -17,9 +17,23 @@ const setTitles = (state, { articles }) => {
        articles: articles, 
     }
 }
-const setArticle = (state, { article }) => state.update("articles", articles =>
-    articles.set(article.get("id"), article.set("comments", List()))
-);
+const setArticle = (state, { comment, id }) => {
+    let articles = state.articles.slice();
+    let articleWithComments = articles.map(article => {
+            if(article.id === +id) {
+                let comments = {comments: []};
+                this.setState({comments : comments});     
+            }   
+    });
+    
+    return {
+        ...state,
+        articles: articleWithComments,
+    }
+}
+// const setArticle = (state, { article }) => state.update("articles", articles =>
+//     articles.set(article.get("id"), article.set("comments", List()))
+// );
 const removeArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
 
 // const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
@@ -41,9 +55,25 @@ const editArticle = (state, article) => state.update("articles", articles =>
 	articles.set(article.get("id"), article)
     );
 
-const addComment = (state, { id, comment }) => state.update("articles", articles =>
-    articles.update(id, article => article.update("comments", comments => comments.push(comment)))
-);
+const addComment = (state, { id, comment }) => {
+    let comments = [
+        { 
+            email: comment.email,
+            comment: comment.comment,
+        }
+    ];
+    let articleswithcomments = state.articles.map(article=>{if(article.id === +id) {
+        article.comments = comments
+    }})
+    return {
+        ...state,
+        articles: articleswithcomments,
+    }
+};
+
+// const addComment = (state, { id, comment }) => state.update("articles", articles =>
+//     articles.update(id, article => article.update("comments", comments => comments.push(comment)))
+// );
 
 const setComments = (state, { id, comments }) => state.update("articles", articles =>
     articles.update(id, article => article.set("comments", comments))

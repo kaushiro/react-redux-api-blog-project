@@ -5,7 +5,7 @@ import { postComment } from "../data/actions/api";
 
 const mapDispatchToProps = (dispatch, {id}) => {
     return {
-        addComment: data => dispatch(postComment(data, id)),
+        addComment: data => dispatch(postComment(id, data)),
     };
 };
 

@@ -5,10 +5,11 @@ export const setTitles = articles => {
     };
 };
 
-export const setArticle = article => {
+export const setArticle = (article, id) => {
     return {
         type: "setArticle",
         article: article,
+        id: id
     };
 };
 

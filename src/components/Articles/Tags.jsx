@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 // show each tag - tags passed in by parent
 const Tags = ({ tags }) => {
-	const allTags = tags.split(",");
-	console.log(allTags);
+	const allTags = tags.split(", ");
 	return (
 		<div>
     		{ allTags.map((tag) => (

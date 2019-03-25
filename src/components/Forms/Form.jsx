@@ -25,18 +25,13 @@ class Form extends Component {
         return !this.state.article.every(({ value }) => value);
     }
     submit(e) {
-        const { article } = this.state;
-        console.log(article);
         e.preventDefault();
-        const inputData = article.reduce((inputData, { name, value }) => {
-            inputData[name] = value;
-            return inputData;
+        const data = this.state.article.reduce((data, { name, value }) => {
+            data[name] = value;
+            return data;
         }, {});
-        console.log(inputData);    
-        this.state.articles = inputData;
-        console.log(this.state.articles);
-        const data =this.state.articles;
-        console.log(this.state.articles);
+        console.log(data);    
+
         this.props.onSubmit(data);
     }
 

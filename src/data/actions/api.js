@@ -30,15 +30,16 @@ export const postArticle = (data) => dispatch => {
     // data.tags = data.tags.split(/,\s+/);
     axios.post("/articles", data).then(response => {
         const article = data;
-        console.log(article);
+        
         dispatch(addArticle(article));
         history.push("/");
     });
 };
-export const getArticle = (id) => dispatch => {
-    axios.get("/articles" + id).then(response => {
+export const getArticle = ({ id }) => dispatch => {
+    axios.get("/articles/" + id).then(response => {
         const article = response.data;
-        dispatch(setArticle(article));
+        console.log(article);
+        dispatch(setArticle(article, id));
         dispatch(getComments(id));
     });
 };
@@ -56,16 +57,17 @@ export const deleteArticle = id => dispatch => {
 };
 
 export const postComment = (id, data) => dispatch => {
-    axios.post("articles/" + id + "comments", data).then(response=> {
+    axios.post("/articles/" + id + "/comments", data).then(response=> {
         const comment = response.data;
+        console.log(comment);
         dispatch(addComment(id, comment))
     })
 } 
 
 export const putArticle = (id, data )=> dispatch => {
     axios.put("/articles/" + id, data).then(response => {
-        const article = response.data;
+        const article = data;
         dispatch(editArticle(article));
-        history.push("/articles" + id)
+        history.push("/articles/" + id)
     });
 };

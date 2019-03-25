@@ -42,9 +42,7 @@ const App = () => (
                 <Delete id={ +match.params.id } />
             )} />
 
-            <Route exact path="/articles/:id/comments" render={ ({ match }) => (
-                <Comments id={ +match.params.id } />
-            )} />        
+            <Route exact path="/articles/:id/comments" component = {Comments }/>        
 
             { /* 404 page */}
             <Route component={ FourOhFour } />

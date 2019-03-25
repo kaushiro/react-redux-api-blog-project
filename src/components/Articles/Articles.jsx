@@ -9,7 +9,6 @@ class Articles extends Component {
 
     render () {
         const { articles } = this.props;
-
         return (
             <div>
                 { /* check there are articles to show */ }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List } from "immutable";
 import Form from "../Forms/Form";
-
+import { Link } from "react-router-dom";
 // the fields to use for the comments form
 const fields = [
     { name: "email", label: "Email", value: "" },
@@ -16,8 +16,8 @@ const Comments = ({ comments, addComment, id }) => (
             { /* loop over all the comments */ }
             { comments.map((comment, i) => (
                 <li key={ i } className="list-group-item">
-                    <h4 className="list-group-item-heading">{ comment.get("email") }</h4>
-                    <p className="list-group-item-text">{ comment.get("comment") }</p>
+                    <h4 className="list-group-item-heading">{ comment.email }</h4>
+                    <p className="list-group-item-text">{ comment.comment }</p>
                 </li>
             )) }
         </ul>
@@ -25,7 +25,13 @@ const Comments = ({ comments, addComment, id }) => (
         <div className="panel panel-default">
             <div className="panel-heading">Add Comment</div>
             { /* pass through fields, button and also a className prop */ }
-            <Form className="panel-body" onSubmit={ addComment } fields={ fields } button="Add Comment" />
+            <Form 
+                className="panel-body" 
+                onSubmit={ addComment } 
+                fields={ fields } 
+                button={<Link to={ "/articles/" + id + "/comments" } >
+                    Add Comment
+                </Link>} />
         </div>
     </div>
 );

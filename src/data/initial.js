@@ -1,6 +1,6 @@
-import { Map, List } from "immutable"
+
 const initial = {
-	articles: List(),
+	articles: [],
 };
 
 export default initial;

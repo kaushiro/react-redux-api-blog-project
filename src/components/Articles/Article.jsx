@@ -13,12 +13,11 @@ class Article extends Component {
     }
 
     render() {
-        const { id, article, onDelete, addComment } = this.props;
-
+        const { id, article, onDelete } = this.props;
         return !article ? <FourOhFour /> : (
             <div>
                 { /* the edit/delete buttons  */ }
-                <Actions article={ article } onDelete={ onDelete } />
+                <Actions article={ article } onDelete={ onDelete } id = { id } />
 
                 <h2>{ article.title }</h2>
 
@@ -26,14 +25,14 @@ class Article extends Component {
                 <div dangerouslySetInnerHTML={{ __html: article.article }} />
 
                 { /* use the Tags component to show the tags 
-                <Tags tags={ article.tags } />
+            
                 */ }
-                
+                <Tags tags={ article.tags } />
 
                 <hr />
 
                 { /* use the comments component */ }
-                <Comments comments={ article.comments } addComment={ addComment } id={id}/>
+                <Comments comments={ article.comments } id={id}/>
             </div>
         );
     }

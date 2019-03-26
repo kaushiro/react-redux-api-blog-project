@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import Add from "../components/Articles/Add";
-import history from "../history";
 import { postArticle } from "../data/actions/api";
 
 const mapDispatchToProps = dispatch => {

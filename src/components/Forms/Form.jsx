@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import uuidvl from "uuid";
 import Input from "./Input";
-import { fromJS, toArray, List } from "immutable";
+
 // fields: an array of objects with name and field properties and outputs an Input for each
 // className: so you can style it from its parent
 // button: the text for the submit button

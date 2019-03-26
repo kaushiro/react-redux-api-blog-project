@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // a component to show the Edit and Delete buttons
-const Actions = ({ article }) => (
+const Actions = ({ article, id }) => (
     <div className="pull-right">
-        <Link to={ "/articles/" + article.id + "/edit" } className="btn btn-info">
+        <Link to={ "/articles/" + id + "/edit" } className="btn btn-info">
             Edit Article
         </Link>
 
         { " " }
 
-        <Link to={ "/articles/" + article.id + "/delete" } className="btn btn-danger">
+        <Link to={ "/articles/" + id + "/delete" } className="btn btn-danger">
         	Delete Article
         </Link>
 

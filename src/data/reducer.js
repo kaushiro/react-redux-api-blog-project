@@ -1,13 +1,17 @@
 // add List to our imports
-import { Map, List } from "immutable";
-import history from "../history";
 // import initial from "./initial";
 // create a function that returns a new article Map
 
 const addArticle = (state, {article}) => {
     return {
     ...state,
-    articles: state.articles.concat(article)
+    articles: [
+        ...state.articles,
+        {
+            article: article.article,
+            tags: article.tags,
+        }
+    ]
     };
 };
 
@@ -16,58 +20,56 @@ const setTitles = (state, { articles }) => {
         ...state,
        articles: articles, 
     }
-}
-const setArticle = (state, { comment, id }) => {
-    let articles = state.articles.slice();
-    let articleWithComments = articles.map(article => {
-            if(article.id === +id) {
-                let comments = {comments: []};
-                this.setState({comments : comments});     
-            }   
-    });
-    
+};
+const setArticle = (state, { article, id }) => {
+    let addedArticle = state.articles.map(a=>{
+        if(a.id === +id) {
+            return article;
+        } else {
+            return a;
+        }
+    })
+    return {
+    ...state,
+    articles: addedArticle,
+    };
+};
+const removeArticle = (state, { id }) => {
+    let removedArticleFromArray = state.articles.filter(articles=>articles.id !== +id);
+    console.log(id, removedArticleFromArray);
     return {
         ...state,
-        articles: articleWithComments,
+        articles: removedArticleFromArray,
     }
 }
-// const setArticle = (state, { article }) => state.update("articles", articles =>
-//     articles.set(article.get("id"), article.set("comments", List()))
-// );
-const removeArticle = (state, {id}) => state.update("articles", articles => articles.filter(article => article.get("id") !== id));
 
-// const editArticle = (state, {id, title, article, tags}) => state.update("articles", articles => (
-// 	articles.map(article => {
-//         if (article.get("id") === +id) {
-//             console.log('match');
-//             return article.set(
-//             "id": id,
-//             "title": title,
-//             "article": article,
-//             "tags": tags
-//           )
-//         }
-//     })
-//     )
-// );
-
-const editArticle = (state, article) => state.update("articles", articles =>
-	articles.set(article.get("id"), article)
-    );
-
-const addComment = (state, { id, comment }) => {
-    let comments = [
-        { 
-            email: comment.email,
-            comment: comment.comment,
+const editArticle = (state, { article, id }) => {
+    console.log(article, id);
+    const articlesWithEdits = state.articles.map(a => {
+        if(a.id === id) {
+            return article;
+        } else {
+            return a;
         }
-    ];
-    let articleswithcomments = state.articles.map(article=>{if(article.id === +id) {
-        article.comments = comments
-    }})
+    })
+    console.log(articlesWithEdits);
     return {
         ...state,
-        articles: articleswithcomments,
+        articles: articlesWithEdits
+    }
+}
+const addComment = (state, { id, comment }) => {
+    let articleComment = state.articles.map(a =>{
+        if(a.id === id) {
+            a.comments.push(comment);
+            return a;
+        }
+            return a;
+        });
+        console.log(articleComment);
+        return {
+        ...state,
+       articles: articleComment, 
     }
 };
 
@@ -95,3 +97,5 @@ const reducer = (state, action) => {
 }
 
 export default reducer;
+
+// selectors

@@ -30,7 +30,7 @@ const App = () => (
 
             { /* pass through the id to the container */ }
             <Route exact path="/articles/:id" render={ ({ match }) => (
-                <Article id={ +match.params.id } />
+                <Article id={ match.params.id } />
             )} />
 
             { /* edit article */ }
@@ -42,7 +42,9 @@ const App = () => (
                 <Delete id={ +match.params.id } />
             )} />
 
-            <Route exact path="/articles/:id/comments" component = {Comments }/>        
+            <Route exact path="/articles/:id/comments" render={ ({ match }) => (
+                <Comments id={ +match.params.id } />
+            )} />       
 
             { /* 404 page */}
             <Route component={ FourOhFour } />

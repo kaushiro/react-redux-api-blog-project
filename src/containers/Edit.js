@@ -1,28 +1,24 @@
 import { connect } from "react-redux";
 // import React from "react";
 import Edit from "../components/Edit";
-import { putArticle } from "../data/actions/api";
+import { putArticle, getArticle } from "../data/actions/api";
 
 
-
-const mapDispatchToProps = (dispatch, {id}) => {
+const mapDispatchToProps = (dispatch, { id }) => {
     return {
-        onSubmit: (data) => dispatch(putArticle(data, id)),
+        onLoad:() => dispatch(getArticle(id)),
+        onEdit: (data) => dispatch(putArticle(id, data)),
     };
 };
 
 
-// Wrap <Edit> in a container component so that you can
-// pass in the correct article's title and article properties to display in the form
-const mapStateToProps = (state, { id, title, tags }) => {
-    const articles = state.get("articles");
-    const article = articles.find(a => a.get("id") === +id);
-
+const mapStateToProps = (state, { id }) => {
+    let article = state.articles.filter(a =>a.id === +id)[0];
     if (article) {
     	const fields = [
-    	    { name: "title", label: "Title", value: article.get("title") },
-    	    { name: "article", label: "Article", value: article.get("article") },
-    	    { name: "tags", label: "Tags", value: article.get("tags").join(", ") },
+    	    { name: "title", label: "Title", value: article.title },
+    	    { name: "article", label: "Article", value: article.article },
+    	    { name: "tags", label: "Tags", value: article.tags },
 		];
 
 		return {

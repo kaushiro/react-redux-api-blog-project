@@ -3,7 +3,6 @@ import axios from "../../axios";
 import history from "../../history";
 // import the fromJS function from immutable
 // this allows us to convert regular JS values into Immutable values
-import { fromJS } from "immutable";
 
 // import the setArticles action
 import { 
@@ -21,7 +20,6 @@ import {
 export const getTitles = () => dispatch => {
     axios.get("/articles").then(response => {
         const articles = response.data;
-        console.log(articles);
         dispatch(setTitles(articles));
     });
 };
@@ -29,16 +27,14 @@ export const getTitles = () => dispatch => {
 export const postArticle = (data) => dispatch => {
     // data.tags = data.tags.split(/,\s+/);
     axios.post("/articles", data).then(response => {
-        const article = data;
-        
+        const article = response.data;
         dispatch(addArticle(article));
         history.push("/");
     });
 };
-export const getArticle = ({ id }) => dispatch => {
+export const getArticle = ( id ) => dispatch => {
     axios.get("/articles/" + id).then(response => {
         const article = response.data;
-        console.log(article);
         dispatch(setArticle(article, id));
         dispatch(getComments(id));
     });
@@ -57,17 +53,20 @@ export const deleteArticle = id => dispatch => {
 };
 
 export const postComment = (id, data) => dispatch => {
+    console.log(id, data);
     axios.post("/articles/" + id + "/comments", data).then(response=> {
-        const comment = response.data;
+        const comment = data;
         console.log(comment);
-        dispatch(addComment(id, comment))
+        dispatch(addComment(id, comment));
+        history.push("/")
     })
 } 
 
 export const putArticle = (id, data )=> dispatch => {
     axios.put("/articles/" + id, data).then(response => {
-        const article = data;
-        dispatch(editArticle(article));
-        history.push("/articles/" + id)
+        console.log(response.data);
+        const article = response.data;
+        dispatch(editArticle(id, article));
+        history.push("/")
     });
 };

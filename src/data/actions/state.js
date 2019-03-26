@@ -13,7 +13,7 @@ export const setArticle = (article, id) => {
     };
 };
 
-export const addArticle = article => {
+export const addArticle = (article) => {
     return {
         type: "addArticle",
         article: article,
@@ -42,9 +42,10 @@ export const setComments = (id, comments) => {
         comments: comments,
     };
 };
-export const editArticle = article => {
+export const editArticle = (article, id) => {
     return {
         type: "editArticle",
         article: article,
+        id: id
     };
 };

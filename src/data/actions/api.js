@@ -1,6 +1,7 @@
 // import our axios config file
 import axios from "../../axios";
 import history from "../../history";
+import {List, fromJS} from "immutable";
 // import the fromJS function from immutable
 // this allows us to convert regular JS values into Immutable values
 
@@ -12,7 +13,7 @@ import {
     addComment,
     editArticle,
     setArticle,
-    setComments
+    setComments,
 } from "./state";
 
 
@@ -25,9 +26,10 @@ export const getTitles = () => dispatch => {
 };
 
 export const postArticle = (data) => dispatch => {
-    // data.tags = data.tags.split(/,\s+/);
+    data.comments = [];
     axios.post("/articles", data).then(response => {
         const article = response.data;
+        console.log(data, article);
         dispatch(addArticle(article));
         history.push("/");
     });
@@ -39,12 +41,7 @@ export const getArticle = ( id ) => dispatch => {
         dispatch(getComments(id));
     });
 };
-export const getComments = id => dispatch => {
-    axios.get("/articles/" + id + "/comments").then(response => {
-        const comments = response.data;
-        dispatch(setComments(id, comments));
-    });
-};
+
 export const deleteArticle = id => dispatch => {
     axios.delete("/articles/" + id).then(response => {
         dispatch(removeArticle(id));
@@ -53,18 +50,28 @@ export const deleteArticle = id => dispatch => {
 };
 
 export const postComment = (id, data) => dispatch => {
-    console.log(id, data);
-    axios.post("/articles/" + id + "/comments", data).then(response=> {
-        const comment = data;
-        console.log(comment);
+    axios.get("/articles/" + id)
+    .then(response => {
+        const comments = response.data.comments;
+        comments.push(data);
+        return axios.patch("/articles/" + id, {comments: comments});
+    })
+    
+    .then(response=> {
+        const comment = response.data;
         dispatch(addComment(id, comment));
-        history.push("/")
+        
     })
 } 
+export const getComments = (id) => dispatch => {
+    axios.get("/articles/" + id ).then(response => {
+        const article = response.data;
+        dispatch(setComments(id, article));
+    });
+};
 
 export const putArticle = (id, data )=> dispatch => {
     axios.put("/articles/" + id, data).then(response => {
-        console.log(response.data);
         const article = response.data;
         dispatch(editArticle(id, article));
         history.push("/")

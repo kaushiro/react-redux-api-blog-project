@@ -27,19 +27,18 @@ export const removeArticle = id => {
     };
 };
 
-export const addComment = (id, comment) => {
+export const addComment = (id, updatedArticle) => {
     return {
         type: "addComment",
         id: id,
-        comment: comment,
+        updatedArticle: updatedArticle,
     };
 };
-
-export const setComments = (id, comments) => {
+export const setComments = (id, article) => {
     return {
         type: "setComments",
         id: id,
-        comments: comments,
+        article: article,
     };
 };
 export const editArticle = (article, id) => {

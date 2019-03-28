@@ -13,7 +13,7 @@ import Delete from "./containers/Delete";
 import Articles from "./containers/Articles";
 import Article from "./containers/Article";
 import Add from "./containers/Add";
-import Comments from "./containers/Comments";
+import Comments from "./components/Articles/Comments";
 
 const App = () => (
     <div>
@@ -29,6 +29,7 @@ const App = () => (
             <Route exact path="/articles/add" component={ Add } />
 
             { /* pass through the id to the container */ }
+            { /* 404 page */}
             <Route exact path="/articles/:id" render={ ({ match }) => (
                 <Article id={ match.params.id } />
             )} />
@@ -40,13 +41,8 @@ const App = () => (
 
             <Route exact path="/articles/:id/delete" render={ ({ match }) => (
                 <Delete id={ +match.params.id } />
-            )} />
-
-            <Route exact path="/articles/:id/comments" render={ ({ match }) => (
-                <Comments id={ +match.params.id } />
             )} />       
 
-            { /* 404 page */}
             <Route component={ FourOhFour } />
         </Switch>
 

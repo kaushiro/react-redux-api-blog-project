@@ -4,7 +4,7 @@ import FourOhFour from "../FourOhFour";
 
 import Actions from "./Actions";
 import Tags from "./Tags";
-import Comments from "../../containers/Comments";
+import Comments from "./Comments";
 
 // if article isn't passed in, that means it's an invalid id, so show FourOhFour
 class Article extends Component {
@@ -13,7 +13,7 @@ class Article extends Component {
     }
 
     render() {
-        const { id, article, onDelete } = this.props;
+        const { id, article, onDelete, addComment } = this.props;
         return !article ? <FourOhFour /> : (
             <div>
                 { /* the edit/delete buttons  */ }
@@ -32,7 +32,10 @@ class Article extends Component {
                 <hr />
 
                 { /* use the comments component */ }
-                <Comments comments={ article.comments } id={id}/>
+                <Comments 
+                    id={ id }
+                    comments={ article.comments } 
+                    addComment={addComment}/>
             </div>
         );
     }

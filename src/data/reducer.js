@@ -58,35 +58,37 @@ const editArticle = (state, { article, id }) => {
         articles: articlesWithEdits
     }
 }
-const addComment = (state, { id, comment }) => {
-    let articleComment = state.articles.map(a =>{
-        if(a.id === id) {
-            a.comments.push(comment);
+const addComment = (state, { id, updatedArticle }) => {
+    let addCommentToArticle = state.articles.map(a => {
+        if(a.id === +id) {
+            return updatedArticle; 
+        } else {
             return a;
         }
-            return a;
-        });
-        console.log(articleComment);
-        return {
+    })
+    return {
         ...state,
-       articles: articleComment, 
-    }
+       articles: addCommentToArticle,
+     }
+
 };
-
-// const addComment = (state, { id, comment }) => state.update("articles", articles =>
-//     articles.update(id, article => article.update("comments", comments => comments.push(comment)))
-// );
-
-const setComments = (state, { id, comments }) => state.update("articles", articles =>
-    articles.update(id, article => article.set("comments", comments))
-);
-// take the articles we've been given and set them as articles
-// note: this will be expecting an Immutable List
-// const setTitles = (state, { titles }) => state.set("titles", titles);
-
+const setComments = (state, { article, id }) => {
+    let addedComments = state.articles.map(a=>{
+        if(a.id === +id) {
+            return article;
+        } else {
+            return a;
+        }
+    })
+    return {
+    ...state,
+    articles: addedComments,
+    };
+};
 const reducer = (state, action) => {
     switch (action.type) {
         case "addArticle": return addArticle(state, action);
+        case "setArticle": return setArticle(state, action);
         case "removeArticle": return removeArticle(state, action);
         case "editArticle": return editArticle(state, action);
         case "addComment": return addComment(state, action);
